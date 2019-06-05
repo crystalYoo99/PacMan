@@ -184,7 +184,12 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					// DONE �씠 �엯�젰�릺硫� �쑀�� �븘�씠�뵒 �셿�꽦, �븘�땶寃쎌슦�뿉�뒗 臾몄옄�뿴�뿉 怨꾩냽 遺숈씠湲� //
 					if (isEnter) {
 						String alphas = alpha[(nameY-249)/50][(nameX-19)/50];
-						if (alphas.equals("DONE")) seeScore = true;
+						if (alphas.equals("DONE") && userName.length()<1) {
+							g.drawString("Enter your Name!!!", xx+200, yy+180);
+						}
+						else if (alphas.equals("DONE") == true) {
+							seeScore = true;
+						}
 						else {
 							sb.append(alphas);
 							userName = sb.toString();
