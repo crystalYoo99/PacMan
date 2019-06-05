@@ -29,7 +29,7 @@ public class Pacman extends Rectangle{
 
 		for(int i=0;i<map.tiles.length;i++){
 			for(int j=0;j<map.tiles[0].length;j++){
-				if(map.tiles[i][j] != null){
+				if(map.tiles[i][j]!=null){
 					if(bounds.intersects(map.tiles[i][j])) {
 						return false;
 					}
@@ -41,9 +41,9 @@ public class Pacman extends Rectangle{
 	}
 
 	public void tick() {
-		if(Game.itemSTATE == Game.ITEM_SPEED) speed = 6;
+		if(Game.itemSTATE == Game.ITEM_STERN) speed = 0;
 		else speed = 3;
-		
+
 		if(right&&canMove(x+speed, y)){
 			x=x+speed;
 			if(x%2==0) {

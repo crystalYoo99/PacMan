@@ -75,9 +75,9 @@ public class Score {
     			g.setColor(Color.RED);
     			g.drawString("ITEM : DEVIL("+sec+")", 80, 155);
     		}
-    		else if(Game.itemSTATE == Game.ITEM_SPEED) {
+    		else if(Game.itemSTATE == Game.ITEM_STERN) {
     			g.setColor(Color.CYAN);
-    			g.drawString("ITEM : SPEED("+sec+")", 80, 155);
+    			g.drawString("ITEM : STERN("+sec+")", 80, 155);
     		}
     		//sujeogn finish
          g.setColor(Color.BLACK);

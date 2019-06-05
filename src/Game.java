@@ -58,7 +58,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	public static int itemSTATE = -1;
 	public static final int ITEM_DEVIL = 2;
 	public static final int ITEM_KING = 3;
-	public static final int ITEM_SPEED = 4;
+	public static final int ITEM_STERN = 4;
 	public static final int ITEM_BLACK = 5;
 
 	public static int STATE = -1;
@@ -192,12 +192,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 					// DONE �씠 �엯�젰�릺硫� �쑀�� �븘�씠�뵒 �셿�꽦, �븘�땶寃쎌슦�뿉�뒗 臾몄옄�뿴�뿉 怨꾩냽 遺숈씠湲� //
 					if (isEnter) {
 						String alphas = alpha[(nameY-249)/50][(nameX-19)/50];
-						if (userName.length()<1 && alphas.equals("DONE")) {
-							g.drawString("Please Enter your Name!!", xx+150, yy+180);
-						}
-						else if (alphas.equals("DONE")) {
-							seeScore = true;
-						}
+						if (alphas.equals("DONE")) seeScore = true;
 						else {
 							sb.append(alphas);
 							userName = sb.toString();
