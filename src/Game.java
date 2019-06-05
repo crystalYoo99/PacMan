@@ -64,11 +64,7 @@ public class Game extends Canvas implements Runnable, KeyListener{
 	public static int STATE = -1;
 
 	public boolean isEnter = false;
-	private int time = 0;
-	private int targetFrames = 35;
 	private boolean showText = true;
-
-//<<<<<sujeong change>>>>>
 	public static final Color TRANSCLUENT_BLACK = new Color(0f, 0f, 0f, 0.7f);
 
 	/********************************************************************************************************/
@@ -134,15 +130,11 @@ public class Game extends Canvas implements Runnable, KeyListener{
 		int xx = Game.WIDTH/2 - menu_width/2; // �궗媛곹삎�쓽 �쇊履� �긽�떒 瑗�吏��젏�쓽 x醫뚰몴
 		int yy = Game.HEIGHT/2 - menu_height/2; // �궗媛곹삎�쓽 �쇊履� �긽�떒 瑗�吏��젏�쓽 y醫뚰몴
 
-		//<<<<<<sujeong change>>>>>>>
-
-
-
 		if(STATE==GAME) { // STATE 蹂��닔媛� GAME. 寃뚯엫 �떎�뻾 以� �긽�깭
-
 			pacman.render(g); // �뙥留� �씠誘몄� 洹몃━湲�
 			map.render(g); // 留� �씠誘몄� 洹몃━湲�
 			score.render(g); // �뒪肄붿뼱 �씠誘몄� 洹몃━湲�
+			
 			if(itemSTATE == ITEM_BLACK) {
 				g.setColor(Color.white);
 				g.setFont(new Font(Font.DIALOG, Font.BOLD, 25));
@@ -153,10 +145,10 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				gb.fillRect(0, 0, Game.WIDTH, Game.HEIGHT);
 			}
 			else{
-			g.setColor(Color.white); //�븯���깋�쑝濡� �꽕�젙
-			g.setFont(new Font(Font.DIALOG, Font.BOLD, 25)); // 湲��뵪 �꽭�똿
-			g.drawString("SCORE", 80, 60); // 湲��뵪 洹몃━湲�
-		}
+				g.setColor(Color.white); //�븯���깋�쑝濡� �꽕�젙
+				g.setFont(new Font(Font.DIALOG, Font.BOLD, 25)); // 湲��뵪 �꽭�똿
+				g.drawString("SCORE", 80, 60); // 湲��뵪 洹몃━湲�
+			}
 		}
 
 		else if (STATE==GAMEOVER) {
@@ -241,7 +233,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				g.drawString("WELCOME TO PACMAN", xx+150, yy+160);
 				g.drawString("Press enter to start the game", xx+125, yy+200);
 				g.setFont(new Font(Font.DIALOG, Font.BOLD, 15));
-				//Font f = Font.createFont(Font.TRUETYPE_FONT, new File("nontoxic.ttf"));
 				g.drawString("Made by Jeon, You, Hwang, Choi, Kim and Park. Team 6", xx+90, yy+300);
 				if (isEnter == true) {
 					startMain = true;
@@ -259,7 +250,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				seeds = new Seed(xx+seedX, yy+seedY);
 				seeds.render(g);
 
-				// �뿏�꽣媛� �닃由щ㈃ �룄�듃 �쐞移섏뿉 �엳�뒗 留듭씠 �꽑�깮 �맂�떎. //
 				if (isEnter == true) {
 					mapPath = maps[(seedY-119)/30];
 					selectMap = true;
@@ -272,14 +262,13 @@ public class Game extends Canvas implements Runnable, KeyListener{
 			}
 			else if (showText && !selectChar && !gameset) {
 				Seed seeds;
-				// 罹먮┃�꽣 �꽑�깮硫붾돱 //
-				g.drawString("Select Character", xx+210, yy+30);
-				g.drawString("�쟾�뿬�썕", xx+205, yy+124);
-				g.drawString("�쑀�닔�젙", xx+205, yy+154);
-				g.drawString("諛뺣퀝�쑄", xx+205, yy+184);
-				g.drawString("源����쁺", xx+205, yy+214);
-				g.drawString("�솴�꽌�쁽", xx+205, yy+244);
-				g.drawString("理쒗븯�쁽", xx+205, yy+274);
+				g.drawString("Select Character", xx+210, yy+60);
+				g.drawString("Jeon", xx+205, yy+124);
+				g.drawString("You", xx+205, yy+154);
+				g.drawString("Park", xx+205, yy+184);
+				g.drawString("Kim", xx+205, yy+214);
+				g.drawString("Hwang", xx+205, yy+244);
+				g.drawString("Choi", xx+205, yy+274);
 
 				seeds = new Seed(xx+seedX, yy+seedY);
 				seeds.render(g);
@@ -327,21 +316,6 @@ public class Game extends Canvas implements Runnable, KeyListener{
 				STATE=GAME;
 			}
 		}
-	}
-
-	//************* 硫붿씤 �븿�닔 ***************//
-	public static void main(String[] args) {
-		Game game = new Game(); // �깉濡쒖슫 寃뚯엫 媛앹껜 �깮�꽦
-		JFrame frame = new JFrame(); // Jframe �깮�꽦
-		frame.setTitle(Game.TITLE); // �봽�젅�엫�쓽 �젣紐⑹쓣 ���씠��濡� 蹂�寃�
-		frame.add(game); // 留뚮뱺 game 媛앹껜瑜� 留뚮뱾�뼱吏� 李� �쐞�뿉 遺숈씤�떎
-		frame.setResizable(false); // 李쎌“�젅�씠 遺덇��뒫�븯寃� �꽕�젙
-		frame.pack(); // 留뚮뱾�뼱吏� 而댄룷�꼳�듃�뱾�쓣 李쎌뿉 留욊쾶 �떎 �빀爾먯쨲
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
-
-		frame.setVisible(true);
-		game.start(); // �뒪�젅�뱶 �떆�옉
 	}
 
 	/***************************************** �뒪�젅�뱶媛� �떆�옉�릺硫� �샇異쒕맖 ************************************************/
